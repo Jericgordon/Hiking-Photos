@@ -1,8 +1,8 @@
 import { StrictMode } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import ReactDOM from "react-dom/client";
-import AddPostModal from "./components/pages/AddPostModal.jsx";
-import NewPostsPage from "./components/pages/NewPostsPage.jsx";
+import AddPostModal from "./pages/AddPostModal.js";
+import NewPostsPage from "./pages/NewPostsPage.jsx";
 const root = document.getElementById("root");
 
 

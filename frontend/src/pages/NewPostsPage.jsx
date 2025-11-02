@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { StrictMode } from "react";
-import Map from "../Map.jsx";
+import Map from "../components/Map.jsx";
 
 export default function NewPostsPage(){
   return (
