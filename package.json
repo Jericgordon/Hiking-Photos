@@ -1,0 +1,31 @@
+{
+  "name": "hiking-photos",
+  "version": "1.0.0",
+  "description": " ",
+  "author": "Jen Gordon and Kinsey Bellerose",
+  "license": "MIT",
+  "main": "backend.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch backend.js",
+    "test": "nodemon backend.js"
+  },
+  "devDependencies": {
+    "@eslint/js":"^9.38.0",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jest": "^29.0.1",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.4.0",
+    "jest": "^30.2.0",
+    "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-scripts": "^5.0.0",
+    "express": "^5.1.0",
+    "mongodb": "6.20",
+    "nodemon": "^3.1.10"
+  }
+}
