@@ -8,11 +8,17 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+
+//routes to user pictures
+app.use("/user_data/", express.static("./user_data/"));
+
 app.use("/", express.static("./frontend/dist"));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 
 //this route just returns static files test JSON data to not have to deal with
 //seting up data flows quite yet

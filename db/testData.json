@@ -2,16 +2,19 @@
     {
         "pic_name":"start",
         "lon": 34.557761,
-        "lat": -84.249422
+        "lat": -84.249422,
+        "url": "http://localhost:3000/user_data/1.jpg"
     },
     {
         "pic_name":"half",
         "lon": 39.319472,
-        "lat":  -77.740922 
+        "lat":  -77.740922 ,
+        "url": "http://localhost:3000/user_data/2.jpg"
     },
     {
         "pic_name":"end",
         "lon": 45.904492,
-        "lat": -68.921500
+        "lat": -68.921500,
+        "url": "http://localhost:3000/user_data/3.jpg"
     }
 ]
