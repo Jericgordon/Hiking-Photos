@@ -1,5 +1,18 @@
 .map {
+    position: relative;
+}
+
+
+
+.map img,.map svg {
     position: absolute;
     top: 0;
     left: 0;
+    width: 75%;
+    height: auto;
 }
+
+map svg {
+    z-index: 10;
+}
+
