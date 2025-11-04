@@ -1,21 +1,24 @@
 import { StrictMode } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import ReactDOM from "react-dom/client";
-import AddPostModal from "./pages/AddPostModal.jsx";
+import AddPostModal from "./components/AddPostModal.jsx";
 import NewPostsPage from "./pages/NewPostsPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import TrailEditPage from "./pages/TrailEditPage.jsx";
+import PresentationPage from "./pages/PresentationPage.jsx";
 const root = document.getElementById("root");
 
-
 //Adding a react DOM to handle routing
-
 
 ReactDOM.createRoot(root).render(
   <BrowserRouter>
     <StrictMode>
       <Routes>
-        <Route path="/" element = {<AddPostModal />}/>
-        <Route path="/new" element = {<NewPostsPage/>}/>
+        <Route path="/" element={<TrailEditPage />} />
+        <Route path="/new" element={<NewPostsPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/view" element={<PresentationPage />} />
       </Routes>
     </StrictMode>
-   </BrowserRouter>
+  </BrowserRouter>
 );
