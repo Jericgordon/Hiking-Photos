@@ -36,6 +36,13 @@ export default function Map({url}) {
   },[])
   
 
+  function onClickHandlerDots(ID){
+    if (openPic === ID){
+      setOpenPic(0); //no pic is showing
+    } else {
+      setOpenPic(ID); 
+    }
+  }
 
   const scale = .908
   return (
@@ -44,7 +51,7 @@ export default function Map({url}) {
       <img ref={mapImg}  src={map}></img> 
       <svg  viewBox={`0 0 ${700.549 * scale} ${3652.86 * scale}`}>
         {/* <MapImageDot ID={1} X={200} Y={20} onClick={()=>{}}/> */}
-        {mapDots.map((dot) => <MapImageDot openID={openPic} myID={dot.ID} key={dot.ID} X={dot.X} Y={dot.Y} url={dot.url} onClick={() => {setOpenPic(dot.ID); console.log("click!")}}/>)}
+        {mapDots.map((dot) => <MapImageDot openID={openPic} myID={dot.ID} key={dot.ID} X={dot.X} Y={dot.Y} url={dot.url} onClick={() => onClickHandlerDots(dot.ID)}/>)}
         <path
           ref={trail}
           transform="translate(-36,-20)"
