@@ -60,7 +60,7 @@ export default function PostMaker({openPic,setOpenPic}) {
             >
                 <Form.Label>Enter Post</Form.Label>
                 <Form.Control as="textarea" placeholder="Your adventure here..." rows={3} />
-                <ButtonGroup>
+                <ButtonGroup className="picture-toggles">
                     {radios.map((radio, idx) => (
                         <ToggleButton 
                             key={idx}
@@ -76,7 +76,7 @@ export default function PostMaker({openPic,setOpenPic}) {
                         </ToggleButton>
                     ))}
                 </ButtonGroup>
-                <Button type="submit">Post</Button>
+                <Button className="submit-button" type="submit">Post</Button>
             </Form.Group>
         </Form>
     </div>

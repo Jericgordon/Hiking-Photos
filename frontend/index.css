@@ -15,17 +15,24 @@
 }
 
 .PostForm {
+    display: flexbox;
     position: sticky;
     top: 3rem;
     left: 70vw;
     right: 1rem;
     border-radius: 25px;
-    padding: 1rem;
+    padding: 1rem 1rem 0rem 1rem;
     width: 30rem;
     height: auto;
     z-index: 4;
     border: 1px solid gray;
     background-color: lightgrey;
+}
+
+.submit-button {
+    float: right;
+    margin-top: 1rem;
+    margin-right: 1rem;
 }
 
 #root {
@@ -47,7 +54,9 @@ svg path {
     border: 2px solid grey;
 }
 
-
+.picture-toggles {
+    margin-top: 1rem;
+}
 
 svg .Dot {
     r:4.5;
