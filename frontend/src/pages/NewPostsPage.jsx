@@ -5,13 +5,15 @@ import PostMaker from "../components/postMaker.jsx";
 
 export default function NewPostsPage() {
   const [openPic, setOpenPic] = useState(() => -1);
+  const [percent, setCurrentPercent] = useState(() => -1);
+
 
   return (
     <>
       <TrailNavbar />
       <h1>Map!</h1>
-      <Map url="http://localhost:3000/api/test" openPic={openPic} setOpenPic={(v) => {setOpenPic(v)}}/>
-      <PostMaker openPic={openPic} setOpenPic={setOpenPic} />
+      <Map url="http://localhost:3000/api/test" percent={percent} setCurrentPercent={(v) => setCurrentPercent(v)} openPic={openPic} setOpenPic={(v) => {setOpenPic(v)}}/>
+      <PostMaker openPic={openPic} setOpenPic={setOpenPic} percent={percent} setCurrentPercent={(v) => setCurrentPercent(v)}/>
     </>
   );
 }
