@@ -32,11 +32,9 @@ app.use(
       // secure: process.env.NODE_ENV === "production",
       secure: false,
     },
-  })
+  }),
 );
 
-// const date = new Date();
-// console.log("server started");
 app.use(express.static("./frontend/dist"));
 app.use("/api", LoginRouter);
 
@@ -121,4 +119,18 @@ app.get("/api/photos", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
+});
+
+const date = new Date();
+
+//this route just returns static files test JSON data to not have to deal with
+//seting up data flows quite yet
+app.use("/api/test", (req, res) => {
+  console.log("Sending JSON test data", date.getMinutes(), date.getSeconds());
+  res.json({ staticTestCoodinates });
+});
+
+app.post("/api/posts", (req, res) => {
+  console.log(req.body);
+  res.sendStatus(200);
 });
