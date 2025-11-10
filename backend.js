@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // Session configuration
 app.use(
@@ -45,10 +46,6 @@ app.use("/api", LoginRouter);
 //   res.json({ staticTestCoodinates });
 // });
 
-app.get("/api/test", (req, res) => {
-  console.log("TEST ROUTE HIT!");
-  res.json({ message: "Backend is working!", staticTestCoodinates });
-});
 
 app.post("/api/upload", (req, res) => {
   console.log("UPLOAD ROUTE HIT!");
