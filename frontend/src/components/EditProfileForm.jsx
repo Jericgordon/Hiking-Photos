@@ -26,7 +26,6 @@ export default function EditProfileForm({
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
         body: JSON.stringify({ username, password }),
       });
 

@@ -29,7 +29,6 @@ function TrailNavbar() {
     try {
       const response = await fetch(Server.serverName + "/api/logout", {
         method: "POST",
-        credentials: "include",
       });
 
       if (response.ok) {

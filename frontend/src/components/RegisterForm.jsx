@@ -20,7 +20,6 @@ export default function RegisterForm({ onLoginSelection }) {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
         body: JSON.stringify({ username, password }),
       });
 

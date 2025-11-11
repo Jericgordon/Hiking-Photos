@@ -22,7 +22,6 @@ export default function LoginForm({ onSignupSelection }) {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
         body: JSON.stringify({ username, password }),
       });
 
