@@ -43,7 +43,7 @@ app.use(
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
     },
-  }),
+  })
 );
 
 app.use(express.static("./frontend/dist"));
@@ -78,7 +78,7 @@ app.post("/api/upload", (req, res) => {
       // fixes issue with spaces in files
       const cleanFilename = file.originalFilename.replace(
         /[^a-zA-Z0-9.-]/g,
-        "_",
+        "_"
       );
       const newPath = path.join(__dirname, "user_data", cleanFilename);
 
