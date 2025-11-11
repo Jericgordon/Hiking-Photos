@@ -61,7 +61,7 @@ LoginRouter.post("/signup", async (req, res) => {
         .json({ error: "Password should be more than 5 characters" });
     }
 
-    const db = getDB();
+    const db = connectDB();
     const usersCollection = db.collection("users");
 
     // is the username already in the database?
@@ -141,7 +141,7 @@ LoginRouter.put("/update-profile", async (req, res) => {
         .json({ error: "Please enter a new username or password" });
     }
 
-    const db = getDB();
+    const db = connectDB();
     const usersCollection = db.collection("users");
     const currentUser = await usersCollection.findOne({
       username: currentName,
@@ -182,7 +182,7 @@ LoginRouter.delete("/delete-profile", async (req, res) => {
     return res.status(401).json({ error: "User not logged in" });
   }
   try {
-    const db = getDB();
+    const db = connectDB();
     const usersCollection = db.collection("users");
     await usersCollection.deleteOne({ username: currentName });
     const deletedUser = await usersCollection.findOne({
