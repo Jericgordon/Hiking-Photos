@@ -26,10 +26,10 @@ const baseURL = process.env.BASE_URL || "http://localhost:3000";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-  origin: "https://rad-daifuku-c4aece.netlify.app/",
-  credentials: false}
-)); //for resovling cors issues
+// app.use(cors({
+//   origin: "https://rad-daifuku-c4aece.netlify.app/",
+//   credentials: false}
+// )); //for resovling cors issues
 
 // Session configuration
 app.use(
@@ -184,7 +184,6 @@ app.use(express.static("./frontend/dist"));
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
-
 
 
 app.listen(PORT, () => {
