@@ -26,10 +26,14 @@ const baseURL = process.env.BASE_URL || "http://localhost:3000";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-  origin: "https://rad-daifuku-c4aece.netlify.app",
-  credentials: false}
-)); //for resovling cors issues
+
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://rad-daifuku-c4aece.netlify.app/*'); // or a specific domain
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 
 // Session configuration
 app.use(
