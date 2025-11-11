@@ -140,7 +140,7 @@ async function getEXIFdata(path, filename, username) {
   data.lat = latitude;
   data.lon = longitude;
   data.percent = percentage * 100;
-  data.url = "/user_data/" + filename;
+  data.url = "https://hiking-photos-66kz.onrender.com" + "/user_data/" + filename;
   data.user = username;
   console.log("storing photo", data);
   mongoPicturesConnnector.addPicture(data);
