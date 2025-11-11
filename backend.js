@@ -1,6 +1,5 @@
 import express from "express";
 import session from "express-session";
-import staticTestCoodinates from "./db/testData.json" with { type: "json" }; //this should be removed after db migration
 import { formidable } from "formidable";
 import path from "path";
 import fs from "fs";
@@ -12,6 +11,10 @@ import exifr from 'exifr' // => exifr/dist/full.umd.cjs
 import mappify from "./frontend/src/modules/mappify.js";
 import mongoPicturesConnnector from "./db/mongoPicturesConnnector.js";
 import mongoConnection from "./db/mongoConnection.js";
+
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
