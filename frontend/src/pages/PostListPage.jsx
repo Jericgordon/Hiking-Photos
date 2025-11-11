@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ServerConnector from "../modules/ServerConnector.js";
 import { useEffect } from "react";
 import TrailNavbar from "../components/Navbar.jsx";
-import Post from "../components/post.jsx";
+import Post from "../components/Post.jsx";
 
 export default function PostListPage() {
   const [posts, setPosts] = useState(() => []);
