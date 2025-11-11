@@ -166,8 +166,10 @@ app.get("/api/posts", (req, res) => {
   // res.sendStatus(200);
 });
 
-app.get("/api/pic", (req, res) => {
+app.get("/api/pic", async (req, res) => {
   console.log("Pic req");
   const {user,p1,p2} = req.query;
-  mongoPicturesConnnector.getPicturesForPosts(user,p1,p2).then((d) => res.json({d,}));
+  const data = await mongoPicturesConnnector.getPicturesForPosts(user,p1,p2);
+  //const json =  data.json();
+  res.json(data);
 });
