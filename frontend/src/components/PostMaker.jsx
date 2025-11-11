@@ -59,7 +59,7 @@ export default function PostMaker({
       start: picturesSelected.start,
       Percent2: recordedPercent.end,
       end: picturesSelected.end,
-      user: user,
+      user: currentUser,
     };
     console.log("submission data", data);
     if (data.text == null || data.title == "") {
