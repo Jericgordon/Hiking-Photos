@@ -28,9 +28,6 @@ export default function PostMaker({
   const [user,setUser] = useState("debug");
   const textField = useRef(null);
   const title = useRef(null);
-<<<<<<< HEAD
-  useEffect(() => {setUser(user.getCurrentUser())},[]);
-=======
 
   // if you need the user use the currentUser var
   const [currentUser, setUser] = useState(null);
@@ -42,7 +39,6 @@ export default function PostMaker({
     fetchUser();
   }, []);
 
->>>>>>> ed2a5ec4eb1a505e82fdde53f4eeeca89213863b
   const radios = [
     { name: "Start", value: "0" },
     { name: "End", value: "1" },
