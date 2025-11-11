@@ -5,7 +5,7 @@ import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
 import LoginRouter from "./routes/LoginRouter.js";
-import cors from "cors";
+// import cors from "cors";
 import MongoConnector from "./db/mongoConnection.js";
 import exifr from "exifr"; // => exifr/dist/full.umd.cjs
 import mappify from "./frontend/src/modules/mappify.js";
@@ -26,12 +26,12 @@ const baseURL = process.env.BASE_URL || "http://localhost:3000";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors()); //for resovling cors issues
+// app.use(cors()); //for resovling cors issues
 
 // Session configuration
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "secret", //change later
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
@@ -179,6 +179,9 @@ app.get("/api/pic", async (req, res) => {
   res.json(data);
 });
 
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

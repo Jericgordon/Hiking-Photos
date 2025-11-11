@@ -1,6 +1,6 @@
 const me = {};
 
-me.serverName = "https://hiking-photos-66kz.onrender.com"; //TODO replace server name
+me.serverName = "";
 me.sendPostsSuffix = "/api/posts";
 me.updatePostsSuffix = "/api/updatePost";
 me.deletePostsSuffix = "/api/posts/delete";
