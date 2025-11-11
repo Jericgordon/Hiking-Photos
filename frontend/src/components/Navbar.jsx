@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { useEffect, useState } from "react";
 
 function TrailNavbar() {
-  const [username, setUsername] = useState(null);
+  const [username, setUsername] = useState("debug"); //TODO double check that current user is overriding
 
   // use effect to check if a user is currently logged in
   useEffect(() => {
@@ -31,11 +31,10 @@ function TrailNavbar() {
           <Navbar.Brand href="#home">Hiking Stories</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Edit</Nav.Link>
-            <Nav.Link href="/view">Present</Nav.Link>
             {/* Change this formatting later */}
             <Nav.Link href="/login">Login</Nav.Link>
             {/* Remove this but just for ease of access rn*/}
-            <Nav.Link href="/viewPost">Post View</Nav.Link>
+            <Nav.Link href={`/viewPost/${username}`}>Post View</Nav.Link>
             <Nav.Link href="/new">New</Nav.Link>
           </Nav>
           <Nav>
