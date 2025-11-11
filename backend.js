@@ -11,6 +11,7 @@ import MongoConnector from "./db/mongoConnection.js"
 import exifr from 'exifr' // => exifr/dist/full.umd.cjs
 import mappify from "./frontend/src/modules/mappify.js";
 import mongoPicturesConnnector from "./db/mongoPicturesConnnector.js";
+import mongoConnection from "./db/mongoConnection.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -157,6 +158,19 @@ app.post("/api/posts", (req, res) => {
   res.sendStatus(200);
 });
 
+app.post("/api/updatePost", async (req, res) => {
+  console.log("updating post");
+  const id = req.body._id;
+  const data = req.body;
+  delete data._id;
+  try {
+      await mongoConnection.updatePost(id,data);
+      res.sendStatus(200);
+  } catch (error){
+    console.error()
+  }
+});
+
 app.get("/api/posts", (req, res) => {
   const {user} = req.query;
   
@@ -165,7 +179,6 @@ app.get("/api/posts", (req, res) => {
 
 app.get("/api/pic", async (req, res) => {
   const {user,p1,p2} = req.query;
-  console.log(user,p1,p2);
   const data = await mongoPicturesConnnector.getPicturesForPosts(user,p1,p2);
   res.json(data);
 });

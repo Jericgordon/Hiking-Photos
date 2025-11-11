@@ -20,13 +20,6 @@ export default function PostMaker({openPic,setOpenPic,percent,setCurrentPercent,
     { name: 'End', value:"1"},
   ];
 
-  //handle if there's previous data
-  useEffect(() => {
-    if (PrevData) {
-      setPicturesSelected((prev) => ({start:PrevData.start,end:PrevData.end}))
-      console.log("found previous data!" ,PrevData);
-    }
-  },[]);
 
   useEffect(() => {
     if (radioValue === "0") {
@@ -50,7 +43,7 @@ export default function PostMaker({openPic,setOpenPic,percent,setCurrentPercent,
         "end":picturesSelected.end,
         "user" : user
     }
-    //console.log(data);
+    console.log("submission data",data);
     if (data.text == null || data.title == ""){
       showError("Not enough data")
       return
@@ -59,7 +52,17 @@ export default function PostMaker({openPic,setOpenPic,percent,setCurrentPercent,
       showError("Select end and beginning Pictures");
       return
     }
-    Server.sendPostToServer(data,undefined);
+
+    //decide if we're updating a post or creating a new one
+    if (PrevData){
+      data._id = PrevData._id;
+      Server.updatePost(data);
+
+
+    } else {
+      Server.sendPostToServer(data,undefined);
+    }
+    
   }
 
   function showError(Error){
@@ -75,6 +78,14 @@ export default function PostMaker({openPic,setOpenPic,percent,setCurrentPercent,
   },[radioValue])
 
 
+  //handle if there's previous data
+  useEffect( () => {
+    if (PrevData) {
+      setPicturesSelected((prev) => ({start:PrevData.start,end:PrevData.end}));
+      setRecordedPercent(() => ({start:PrevData.Percent1,end:PrevData.Percent2}));
+      console.log(recordedPercent)
+    }
+  },[]);
   
   /* This covers setting our actual picture parameters. We need to be cautious about overwriting
   user choices on changing parts, and so we have a delayer.

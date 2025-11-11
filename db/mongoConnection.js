@@ -68,9 +68,7 @@ function mongoPostConnector({
 
     me.updatePost = async (postId,replacement) => {
     const { client, posts } = connectToPosts();
-    try {
-      console.log("replacing",postId);
-      
+    try { 
       await posts.findOneAndReplace({_id: new ObjectId(postId)},replacement);
       return;
     } catch (err){

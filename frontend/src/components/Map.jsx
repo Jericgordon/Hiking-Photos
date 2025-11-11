@@ -11,7 +11,7 @@ export default function Map({url,openPic,setOpenPic,currentPercent,setCurrentPer
 
   //convert the data in the JSON to real things on the page
   const processJson = (json) => {
-    console.log(json);
+    // console.log(json);
     const convertertedCooodinates = json.map((data) => {
       const onMap = {};
       const length = trail.current.getTotalLength();
