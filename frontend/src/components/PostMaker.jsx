@@ -11,6 +11,7 @@ export default function PostMaker({openPic,setOpenPic,percent,setCurrentPercent,
   const [radioValue, setRadioValue] = useState("0");
   const [delayPictureSet,setDelayPictureSet] = useState(() => true);
   const [picturesSelected,setPicturesSelected] = useState({"start": -1,"end":-1});
+  const [recordedPercent,setRecordedPercent] = useState({start: -1,end:-1})
   const textField = useRef(null);
   const title = useRef(null);
   const user = "debug"; //TODO : UPDATE TO GET USER
@@ -20,21 +21,36 @@ export default function PostMaker({openPic,setOpenPic,percent,setCurrentPercent,
   ];
 
   //handle if there's previous data
-  if (PrevData) {
-    setPicturesSelected({"start":PrevData.start,"end":PrevData.end})
-  }
+  useEffect(() => {
+    if (PrevData) {
+      setPicturesSelected((prev) => ({start:PrevData.start,end:PrevData.end}))
+      console.log("found previous data!" ,PrevData);
+    }
+  },[]);
+
+  useEffect(() => {
+    if (radioValue === "0") {
+      setRecordedPercent(prev => ({...prev ,start:percent}));
+    } else 
+      setRecordedPercent(prev => ({...prev ,end:percent}));
+
+    //console.log("precent",recordedPercent);
+
+  },[percent]);
+  
 
 
   function submit(){
     const data = {
         "title": title.current.value,
         "text": textField.current.value || "",
-        "Percent1": picturesSelected.start,
-        "start":openPic.start,
-        "Percent2" : picturesSelected.end,
-        "end":openPic.end,
+        "Percent1": recordedPercent.start,
+        "start":picturesSelected.start,
+        "Percent2" : recordedPercent.end,
+        "end":picturesSelected.end,
         "user" : user
     }
+    //console.log(data);
     if (data.text == null || data.title == ""){
       showError("Not enough data")
       return
@@ -64,20 +80,19 @@ export default function PostMaker({openPic,setOpenPic,percent,setCurrentPercent,
   user choices on changing parts, and so we have a delayer.
     */
   useEffect(() => {
-    console.log(picturesSelected);
+    //console.log(picturesSelected);
     if (delayPictureSet === true) {
         setDelayPictureSet(false);
         return
     }
-    console.log("setting picture at percent",percent);
-    setCurrentPercent((prev) => ((radioValue === "0") ?
-        {...prev ,start:percent} :
-        {...prev ,end:percent}))
 
     setPicturesSelected((prev) => ((radioValue === "0") ?
         {...prev ,start:openPic} :
         {...prev ,end:openPic}))
 
+    // console.log("setCurrentPercent",percent);
+    // console.log("setpictureSelected",picturesSelected);
+    // console.log("openPic",openPic);
   },[openPic])
 
   function getButtonStyleing(buttonName){
