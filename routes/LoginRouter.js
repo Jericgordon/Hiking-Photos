@@ -1,6 +1,6 @@
 import express from "express";
 import bcrypt from "bcrypt";
-import { getDB } from "../db/connection.js";
+import { connectDB } from "../db/connection.js";
 
 const LoginRouter = express.Router();
 
@@ -15,7 +15,7 @@ LoginRouter.post("/login", async (req, res) => {
         .json({ error: "Please enter a username and password" });
     }
 
-    const db = getDB();
+    const db = connectDB();
     const usersCollection = db.collection("users");
     const user = await usersCollection.findOne({ username });
 
