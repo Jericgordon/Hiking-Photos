@@ -9,11 +9,12 @@ export default function TrailEditPage() {
   // for getting photos from local storage
   useEffect(() => {
     async function loadPhotos() {
+      const currentUser = await userModule.getCurrentUser();
       try {
-        const response = await fetch(ServerConnector.serverName + "/api/photos", {credentials: "include"});
+        const response = await fetch(ServerConnector.getURLforMap(currentUser,-1,100), {credentials: "include"});
         if (response.ok) {
           const data = await response.json();
-          setPhotos(data.photos);
+          setPhotos(data);
         }
       } catch (error) {
         console.error("Failed to load photos:", error);
@@ -35,7 +36,7 @@ export default function TrailEditPage() {
         {photos.map((photo, index) => (
           <div key={index} style={{ margin: "10px" }}>
             <img
-              src={`${ServerConnector.serverName}/user_data/${photo}`}
+              src={photo.url}
               alt={`Upload ${index + 1}`}
               width="300"
               onError={(e) => {
