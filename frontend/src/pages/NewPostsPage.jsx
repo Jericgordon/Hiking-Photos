@@ -6,7 +6,7 @@ import ServerConnector from "../modules/ServerConnector.js"
 
 export default function NewPostsPage() {
   const [openPic, setOpenPic] = useState(() => -1);
-  const [percent, setCurrentPercent] = useState(() => -1);
+  const [percent, setCurrentPercent] = useState({"start": -1,"end":-1});
   const user = "debug"; //TODO integrate real user
   const url = ServerConnector.getURLforMap(user,0,100); //format the query appropriately
   return (

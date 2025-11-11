@@ -8,9 +8,8 @@ export default function PresentationPage() {
   const [openPic, setOpenPic] = useState(() => -1);
   const [percent, setCurrentPercent] = useState(() => -1);
   const location = useLocation();
-  console.log(location);
-  const url = ServerConnector.getURLforMap("debug",0,100); //format the query appropriately
-  
+  const url = ServerConnector.getURLforMap(location.state.user,location.state.Percent1,location.state.Percent2); //format the query appropriately
+  console.log(url)
   return (
     <>
       <TrailNavbar />

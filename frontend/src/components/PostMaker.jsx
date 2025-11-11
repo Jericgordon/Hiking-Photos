@@ -7,7 +7,7 @@ import Server from "../modules/ServerConnector"
 
 // https://react-bootstrap.netlify.app/docs/components/modal/
 // Vertically centered modal
-export default function PostMaker({openPic,setOpenPic,percent,setCurrentPercent}) {
+export default function PostMaker({openPic,setOpenPic,percent,setCurrentPercent,PrevData}) {
   const [radioValue, setRadioValue] = useState("0");
   const [delayPictureSet,setDelayPictureSet] = useState(() => true);
   const [picturesSelected,setPicturesSelected] = useState({"start": -1,"end":-1});
@@ -19,13 +19,20 @@ export default function PostMaker({openPic,setOpenPic,percent,setCurrentPercent}
     { name: 'End', value:"1"},
   ];
 
+  //handle if there's previous data
+  if (PrevData) {
+    setPicturesSelected({"start":PrevData.start,"end":PrevData.end})
+  }
+
 
   function submit(){
     const data = {
         "title": title.current.value,
         "text": textField.current.value || "",
         "Percent1": picturesSelected.start,
+        "start":openPic.start,
         "Percent2" : picturesSelected.end,
+        "end":openPic.end,
         "user" : user
     }
     if (data.text == null || data.title == ""){
@@ -52,6 +59,7 @@ export default function PostMaker({openPic,setOpenPic,percent,setCurrentPercent}
   },[radioValue])
 
 
+  
   /* This covers setting our actual picture parameters. We need to be cautious about overwriting
   user choices on changing parts, and so we have a delayer.
     */
@@ -62,9 +70,13 @@ export default function PostMaker({openPic,setOpenPic,percent,setCurrentPercent}
         return
     }
     console.log("setting picture at percent",percent);
-    setPicturesSelected((prev) => ((radioValue === "0") ?
+    setCurrentPercent((prev) => ((radioValue === "0") ?
         {...prev ,start:percent} :
         {...prev ,end:percent}))
+
+    setPicturesSelected((prev) => ((radioValue === "0") ?
+        {...prev ,start:openPic} :
+        {...prev ,end:openPic}))
 
   },[openPic])
 
@@ -86,8 +98,8 @@ export default function PostMaker({openPic,setOpenPic,percent,setCurrentPercent}
                 className="mb-3"
                 controlId="exampleForm.ControlTextarea1"
             >
-                <Form.Control as="textarea" className="enter-post-title" placeholder="Title..." rows={1} ref={title} />
-                <Form.Control as="textarea" placeholder="Your adventure here..." rows={3} ref={textField} />
+                <Form.Control as="textarea" defaultValue={(PrevData) ? PrevData.title : ""} className="enter-post-title" placeholder="Title..." rows={1} ref={title} />
+                <Form.Control as="textarea" defaultValue={(PrevData) ? PrevData.text : ""} placeholder="Your adventure here..." rows={3} ref={textField} />
                 <ButtonGroup className="picture-toggles">
                     {radios.map((radio, idx) => (
                         <ToggleButton 
