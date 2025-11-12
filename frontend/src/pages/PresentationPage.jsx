@@ -14,12 +14,12 @@ export default function PresentationPage() {
 
 
   useEffect( async () => {
-    const programUser = await userModule.getCurrentUser();
-    const urlgot = ServerConnector.getURLforMap(
+    const programUser = await userGetter.getCurrentUser();
+    const urlgot = await ServerConnector.getURLforMap(
     programUser,
     location.state.Percent1,
-    location.state.Percent2
-  );
+    location.state.Percent2);
+    console.log(url);
   setUrl(urlgot)
   },[])
 
