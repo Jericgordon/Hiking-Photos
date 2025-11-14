@@ -2,7 +2,7 @@
 
 ## Description
 CS5610 Project 3
-
+ 
 <Description>
 
 This is a full stack application with Node + Express + Mongo and React. The website is a hiking photo story site for users to create collections of pictures at different sections of their hike in order to share their stories with others!
