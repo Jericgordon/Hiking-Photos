@@ -54,7 +54,7 @@ function TrailNavbar() {
           <Nav className="me-auto">
             <Nav.Link href="/">Edit</Nav.Link>
             {/* Change this formatting later */}
-            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link href="/login">Login</Nav.Link>  /* use login state other than rendering two login links, line 57 and line 81. Two login links resulted in the login tab still asks me to login even when I'm already loggin in. */
             {/* Remove this but just for ease of access rn*/}
             <Nav.Link href={`/viewPost/${username}`}>Post View</Nav.Link>
             <Nav.Link href="/new">New</Nav.Link>
