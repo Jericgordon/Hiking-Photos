@@ -39,7 +39,7 @@ function mongoPictureConnector({
   This returns all the data we need for the new post*/
   me.getPicturesForPosts = async (userID,percent1,percent2) => {
     // percent1 = 0;
-    percent2 = parseFloat(percent2);
+    percent2 = parseFloat(percent2); /* use Math.floor and Math.ceil could be neater for percent bounding, but it still works */
     percent1 = parseFloat(percent1);
     if (percent1 >= percent2){
       percent1++, percent2--;
