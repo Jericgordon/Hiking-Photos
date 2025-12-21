@@ -1,6 +1,6 @@
 const me = {};
 
-me.serverName = "https://hiking-photos-66kz.onrender.com";
+me.serverName = "https://hiking-photos-e0vz0mfoe-jens-projects-c091249b.vercel.app/";
 me.sendPostsSuffix = "/api/posts";
 me.updatePostsSuffix = "/api/updatePost";
 me.deletePostsSuffix = "/api/posts/delete";

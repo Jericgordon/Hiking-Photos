@@ -5,6 +5,5 @@
 
 
 [[headers]]
-for = "https://hiking-photos-66kz.onrender.com/*"
+for = "https://hiking-photos-e0vz0mfoe-jens-projects-c091249b.vercel.app/*"
 [headers.values]
-Access-Control-Allow-Origin = "https://hiking-photos-66kz.onrender.com/*"

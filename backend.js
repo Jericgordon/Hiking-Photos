@@ -155,7 +155,7 @@ async function getEXIFdata(path, filename, username) {
   data.lon = longitude;
   data.percent = percentage * 100;
   data.url =
-    "https://hiking-photos-66kz.onrender.com" + "/user_data/" + filename;
+    "https://hiking-photos-e0vz0mfoe-jens-projects-c091249b.vercel.app/" + "/user_data/" + filename;
   data.user = username;
   console.log("storing photo", data);
   mongoPicturesConnnector.addPicture(data);
@@ -229,4 +229,9 @@ app.use(express.static("./frontend/dist"));
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
+});
+
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'));
 });
