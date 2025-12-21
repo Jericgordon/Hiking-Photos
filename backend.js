@@ -155,7 +155,7 @@ async function getEXIFdata(path, filename, username) {
   data.lon = longitude;
   data.percent = percentage * 100;
   data.url =
-    "https://hiking-photos-e0vz0mfoe-jens-projects-c091249b.vercel.app/" + "/user_data/" + filename;
+    "https://hiking-photos-e0vz0mfoe-jens-projects-c091249b.vercel.app" + "/user_data/" + filename;
   data.user = username;
   console.log("storing photo", data);
   mongoPicturesConnnector.addPicture(data);
