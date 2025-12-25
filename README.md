@@ -1,3 +1,4 @@
+<!-- Really well done project! I really liked the algorithm you created for placing the photos along the trail! There were a few linting errors and an error when accessing the /view endpoint, but other than that the project was really well done!  -->
 # Hiking-Photos
 
 ## Description
