@@ -1,3 +1,4 @@
+//15 linting problems in frontend, 635 problems in backend.js
 import globals from "globals";
 import js from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
