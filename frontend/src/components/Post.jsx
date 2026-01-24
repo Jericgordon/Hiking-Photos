@@ -7,6 +7,7 @@ export default function Post({ post, setReloadNeeded }) {
     setReloadNeeded(true);
   }
 
+  //try to avoid inline styles- maybe add this rule globally to all divs so you can avoid this?
   return (
     <div style={{ display: "flex" }} className="post">
       <Link state={post} to={{ pathname: "/view" }} className="post-title">
