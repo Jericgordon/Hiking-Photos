@@ -23,7 +23,9 @@ export default function PresentationPage() {
   setUrl(urlgot)
   },[])
 
-
+  // when logged in- clicking on the navbar logo redirects you to an endpoint, /views, but the page is blank- I think it's because the state isnt being passed when navigating to /view
+  // location.state is null when navigating so when you try to access location.state.text it is null 
+  // consider adding null checking or default values for text and title
    //format the query appropriately
   const post = { text: location.state.text, title: location.state.title };
   console.log("Api endpoint", url);
